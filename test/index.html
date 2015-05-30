@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mocha Test Runner</title>
+        <!-- bower:css -->
+        <link rel="stylesheet" href="../bower_components/mocha/mocha.css">
+        <!-- endinject -->
+    </head>
+
+    <body>
+        <div id="mocha"></div>
+        <!-- bower:js -->
+        <script src="../bower_components/blanket/dist/qunit/blanket.js"></script>
+        <script src="../bower_components/mocha/mocha.js"></script>
+        <script src="../bower_components/chai/chai.js"></script>
+        <!-- endinject -->
+
+        <!-- all:js -->
+        <script src="../src/js/selfBalancingBinaryTree.js"></script>
+        <!-- endinject -->
+
+        <script type="text/javascript">
+            var assert = chai.assert;
+        </script>
+
+        <div id="sandbox"></div>
+
+        <script>mocha.setup('bdd')</script>
+        <!-- suites:js -->
+        <script src="suites/test.js"></script>
+        <!-- endinject -->
+
+        <script>
+            if (window.mochaPhantomJS) {
+                mochaPhantomJS.run();
+            } else {
+                mocha.run();
+            }
+        </script>
+    </body>
+</html>

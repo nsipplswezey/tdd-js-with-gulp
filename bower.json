@@ -1,0 +1,23 @@
+{
+  "name": "Basic testing",
+  "version": "0.0.1",
+  "homepage": "https://github.com/nsipplswezey/tdd-js-with-gulp",
+  "authors": [
+    "Nick S <nsipplswezey@gmail.com>"
+  ],
+  "description": "Basic testing automation",
+  "main": "src",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "blanket": "~1.1.7",
+    "mocha": "~2.2.5",
+    "chai": "~2.3.0"
+  }
+}
