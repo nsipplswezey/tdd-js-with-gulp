@@ -4,6 +4,7 @@ var inject = require('gulp-inject');
 var bowerFiles = require('main-bower-files');
 var mochaPhantomJS = require('gulp-mocha-phantomjs');
 
+
 gulp.task('injectIntoIndex', function() {
   return gulp.src('test/index.html')
 
@@ -24,8 +25,20 @@ gulp.task('injectIntoIndex', function() {
 
 });
 
+
 gulp.task('test', ['injectIntoIndex'], function () {
   return gulp.src('test/index.html', {read: false})
     .pipe(mochaPhantomJS());
 });
 
+gulp.task('watch', function(){
+  gulp.watch(['test/suites/**/*.js','src/js/**/*.js'], ['test']);
+});
+
+// gulp.task('watch', function(){
+//   gulp.src(['test/suites/**/*.js','src/js/**/*.js'], {read: false})
+//     .pipe(watch(function(events, cb) {
+//       gulp.run('test', cb);
+//   }));
+
+// });
