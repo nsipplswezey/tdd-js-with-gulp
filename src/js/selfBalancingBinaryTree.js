@@ -62,24 +62,83 @@ BinarySearchTree.prototype.addNode = function(listItem){
     right : null
   }
 
-  if(this._root === null) {
-    this._root = newNode;
 
-  } else if (listItem.id > this._root.value.id && this._root.right.value.id !== listItem.id) {
-    console.log("right");
-    //traverse the tree
-    //figure out where things go
-    this._root.right = newNode;
+  var current = this._root;
 
-  } else if (listItem.id < this._root.value.id && this._root.left.value.id !== listItem.id) {
-    console.log("left");
-    console.log(listItem.id);
-    console.log(this._root.value.id);
 
-    this._root.left = newNode;
-  } else {
+  while(true) {
 
-    throw new Error("A node with that id already exists in this tree");
+    //special case of empty tree
+    if(current === null) {
+      this._root = newNode;
+      break;
+
+      //if newNode.value.id is greater than the current node.value.id, we traverse right
+    } else if (newNode.value.id > current.value.id) {
+
+      //If the right node is empty, make it the new node
+      if(current.right === null){
+        current.right = newNode;
+        break;
+
+      } else {
+        current = current.right;
+      }
+
+      //if newNode.value.id is less than the current node.value.id, we traverse left
+    } else if (newNode.value.id < current.value.id) {
+
+      //If the left node is empty, make it the new node
+      if(current.left === null){
+        current.left = newNode;
+        break;
+
+      } else{
+        current = current.left;
+      }
+
+    } else {
+
+      //throw new Error("A node with that id already exists in this tree");
+      break;
+    }
+
   }
+
+
+
+}
+
+//to test contains we need to add as well.
+BinarySearchTree.prototype.contains = function(value){
+  var found = false;
+  var current = this._root;
+
+  //traverse the tree, while looking for val
+  //if we find val, set found equal to true, and return
+
+  while(!found && current){
+
+
+    //if value is greater than current, go left
+    if(current.value.id > value){
+      current = current.left;
+
+    }else
+
+      //if value is less than current, go right
+      if(current.value.id < value){
+        current = current.right;
+      }
+
+    //the case where we find it
+    else{
+      found = true;
+
+    }
+
+  }
+
+  return found;
 
 }

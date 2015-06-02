@@ -31,7 +31,7 @@ gulp.task('test', ['injectIntoIndex'], function () {
     .pipe(mochaPhantomJS());
 });
 
-gulp.task('watch', function(){
+gulp.task('watch', ['test'], function(){
   gulp.watch(['test/suites/**/*.js','src/js/**/*.js'], ['test']);
 });
 

@@ -67,24 +67,34 @@ describe('Binary Search Tree', function(){
           throw new Error('BOOM');
       }
 
-      assert.throws( function() { boom(true); },
-                    Error );
+      //       assert.throws( function() { boom(true); },
+      //                     Error );
 
-      assert.throws( function() { bTree.addNode({name : 'list Item 3',
-                                               id : 0 }) },
-                    Error)
-
-
-  })
-
-  it('should be able to add an arbitrary number of nodes to the correct locations', function(){
+      //       assert.throws( function() { bTree.addNode({name : 'list Item 3',
+      //                                                id : 0 }) },
+      //                     Error)
 
 
+    })
 
-  })
+    it('should be able to add an arbitrary number of nodes to the correct locations', function(){
+
+      bTree.addNode({name : 'list Item 4',
+                     id : 5})
+
+      bTree.addNode({name : 'list Item 4',
+                     id : -3})
+
+      console.log(bTree);
+
+      assert.equal(bTree.contains(-3),true);
 
 
-});
+
+    })
+
+
+  });
 
 });
 
