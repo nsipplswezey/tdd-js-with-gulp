@@ -77,7 +77,7 @@ describe('Binary Search Tree', function(){
 
     })
 
-    it('should be able to add an arbitrary number of nodes to the correct locations', function(){
+    it('should be able to add an arbitrary number of nodes, and contains should find them', function(){
 
       bTree.addNode({name : 'list Item 4',
                      id : 5})
@@ -88,6 +88,28 @@ describe('Binary Search Tree', function(){
       console.log(bTree);
 
       assert.equal(bTree.contains(-3),true);
+
+    })
+
+    it('the id property of the nodes value property on the left, should always be less than the parent id', function(){
+
+      var newTree = new BinarySearchTree;
+
+      newTree.addNode({name : 'Parent',
+                       id : 0});
+
+      newTree.addNode({name : 'Parent',
+                       id : -1});
+
+      newTree.addNode({name : 'Parent',
+                       id : -5});
+
+      newTree.addNode({name : 'Parent',
+                       id : -2});
+
+      assert.equal((newTree._root.value.id > newTree._root.left.value.id),true);
+      assert.equal((newTree._root.left.value.id > newTree._root.left.left.value.id), true);
+      assert.equal((newTree._root.left.left.left === null), true);
 
 
 
