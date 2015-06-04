@@ -110,6 +110,7 @@ describe('Binary Search Tree', function(){
       assert.equal((newTree._root.value.id > newTree._root.left.value.id),true);
       assert.equal((newTree._root.left.value.id > newTree._root.left.left.value.id), true);
       assert.equal((newTree._root.left.left.left === null), true);
+      assert.equal((newTree._root.left.left.right.value.id > newTree._root.left.left.value.id), true);
 
 
 
@@ -119,5 +120,3 @@ describe('Binary Search Tree', function(){
   });
 
 });
-
-
